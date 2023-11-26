@@ -2,17 +2,95 @@
 
 <h3 class="display-6 text-warning">Product</h3>
 
-@* This is one way data binding  *@
-Name @product.Name <br />
-IsActive @product.IsActive <br />
+<div class="container mt-5">
+    <hr/>
 
+    Name : @product.Name <br/>
+    Active : @product.IsActive <br/>
+    Price : @product.Price <br/>
+
+    This Product is :
+    @if (product.IsActive)
+    {
+        <span class="text-success">Active</span>
+        <br/>
+    }
+    else
+    {
+        <span class="text-danger">Inactive</span>
+        <br/>
+    }
+    
+    @if(!string.IsNullOrEmpty(selectedProp))
+    {
+        <span>Selected Properties : 
+        <span class="text-primary">@product.ProductProperties.FirstOrDefault(u => u.Key == selectedProp).Value</span>
+        </span>
+        <br/>
+    }
+    else
+    {
+        <span class="text-danger">No Properties Selected</span>
+        <br/>
+    }
+    
+    
+    <hr/>
+    <br/>
+
+    @* Data Binding product.Active :  *@
+    <div class="d-flex justify-content-around bg-light">
+
+        <div>Active : <input type="checkbox" @bind="@product.IsActive" checked="@(product.IsActive ? "checked" : null)"/></div>
+        <div>Price : <input type="number" @bind="@product.Price" @bind:event="oninput"/></div> 
+        <div>
+        Product Properties :
+
+        <select @bind="selectedProp" >
+            @foreach (var item in product.ProductProperties)
+            {
+                <option value="@item.Key">@item.Value</option>
+            }
+        </select>
+        </div>
+
+    </div>
+
+
+</div>
 
 
 @code {
-   Tangy_Models.LearnBlazorModels.Demo_Product product = new ()
-   {
-      Id = 1,
-      Name = "Rose Candles",
-      IsActive =  true,
-   }; 
+
+    private string selectedProp =string.Empty; 
+    
+    Tangy_Models.LearnBlazorModels.Demo_Product product = new()
+    {
+        Id = 1,
+        Name = "Rose Candles",
+        IsActive = true,
+        Price = 10.99,
+        ProductProperties = new List<Tangy_Models.LearnBlazorModels.Demo_ProductProp>()
+        {
+            new()
+            {
+                Id = 1,
+                Key = "Color",
+                Value = "Black"
+            },
+            new()
+            {
+                Id = 2,
+                Key = "Flavor",
+                Value = "Rose Jasmine"
+            },
+            new()
+            {
+                Id = 2,
+                Key = "Size",
+                Value = "20oz"
+            }
+        }
+    };
+
 }
