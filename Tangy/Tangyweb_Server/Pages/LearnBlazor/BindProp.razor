@@ -1,0 +1,18 @@
+﻿@page "/LearnBlazor/bindProp"
+
+<h3 class="display-6 text-warning">Product</h3>
+
+@* This is one way data binding  *@
+Name @product.Name <br />
+IsActive @product.IsActive <br />
+
+
+
+@code {
+   Tangy_Models.LearnBlazorModels.Demo_Product product = new ()
+   {
+      Id = 1,
+      Name = "Rose Candles",
+      IsActive =  true,
+   }; 
+}

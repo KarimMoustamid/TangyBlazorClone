@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "Tangy_Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Tangy_Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Tangy_Models.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Tangy_Models/1.0.0": {
+      "type": "project",
+      "path": "../Tangy_Models/Tangy_Models.csproj",
+      "msbuildProject": "../Tangy_Models/Tangy_Models.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "Tangy_Models >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\karim.moustamid\\.nuget\\packages\\": {},
@@ -41,7 +60,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\karim.moustamid\\OneDrive - AgileThought\\Desktop\\60.000\\TangyBlazorClone\\Tangy\\Tangy_Models\\Tangy_Models.csproj": {
+              "projectPath": "C:\\Users\\karim.moustamid\\OneDrive - AgileThought\\Desktop\\60.000\\TangyBlazorClone\\Tangy\\Tangy_Models\\Tangy_Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
